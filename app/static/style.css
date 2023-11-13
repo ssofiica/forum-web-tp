@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&family=Raleway&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Outfit', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: #E8EFE1;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header{
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    background: #E8EFE1;
+}
+.ava{
+    width: 10%;
+}
+.user-header a{
+    font-size: 14px;
+    text-decoration:none;
+    color:#3c3c3c;
+}
+.nickname{
+    font-size: 20px;
+}
+.question{
+    width: 30vw;
+    height: 12vw;
+    background-color: white;
+    border-radius: 20px;
+    border-color: black;
+}
+.question-title a{
+    font-size: 20px;
+    text-decoration: none;
+    color:#3c3c3c;
+}
+.question-text{
+    font-size: 16px;
+}
+.nav a{
+    text-decoration: none;
+    color: #3c3c3c;
+}
+.logo-image{
+    width: 140px;
+    height: 44px;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+}
+.search-form{
+    width: 190px;
+    height: 30px;
+    border: 1.5px solid black;
+    border-radius: 8px;
+    background-color: #E8EFE1;
+}
+.button{
+    width: 90px;
+    height: 30px;
+    border-radius: 6px;
+}
+.button.login{
+    border: none;
+    width: 60px;
+    background-color: #E8EFE1;
+}
+.button.login a{
+    text-decoration: none;
+    color:#3c3c3c;
+}
+.button.signup{
+    background-color:  #3c3c3c;
+    border-color:  #3c3c3c;
+}
+.button.signup a{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+.likes{
+    font-size: 14px;
+}
+.tag a{
+    text-decoration: none;
+    color: #3c3c3c;
+    font-size: 18px;
+    font-weight: 500;
+}
+.user a{
+    text-decoration: none;
+    color: #3c3c3c;
+    font-size: 18px;
+    font-weight: 500;
+}
+.form{
+    width: 50vw;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
+    border-color: black;
+    padding: 3% 5% 3% 5%;
+}
+.form input, form textarea{
+    border: 1.5px solid black;
+    border-color: black;
+    border-radius: 5px;
+    width: 74%;
+    font-size: 16px;
+    height: auto;
+    resize: vertical;
+    max-height: 150px;
+    display: inline-block;
+}
+.form label{
+    width: 25%;
+    margin-top: 3px;
+    font-size: 16px;
+    display:inline-block;
+    display: inline-block;
+    vertical-align: top;
+}
+.button-form{
+    border-radius: 6px;
+    background-color:  #3c3c3c;
+    border-color:  #3c3c3c;
+    color: white;
+    width: 60px;
+    height: 30px;
+}
+.button-form.login{
+    width:70px;
+}
+.form.login{
+    width: 50%;
+    height: 250px;
+}
+.form.signup{
+    height: 500px;
+    width: 40%;
+}
+.form-control.input{
+    height: 30px;
+}
+.form.signup label{
+    width: 100%;
+}
+.button-form.signup{
+    width: 90px;
+}
+.question-card{
+    width: 85%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5% 7% 5% 7%;
+}
+.answer{
+    width: 85%;
+    background-color: rgb(247, 247, 247);
+    border-radius: 20px;
+    padding: 3% 7% 2% 7%;
+}
+.answer img{
+    width: 60%;
+    margin-left: 10px;
+}
+.answers form{
+    width:85%;
+    margin-bottom: 10px;
+    padding: 3% 7% 3% 9%;
+    height: auto;
+}
+.answers form label{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.answers form input{
+    width: 100%;
+}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block user %}
+<img class="ava ms-4 me-4" src="{% static '/ava2.png' %}" alt="avatar">
+<span class="user-header">
+  <span class="nickname d-inline-block mb-0">ssofiica</span>
+  <span class="d-inline-block mt-0"><a href="">settings</a></span>
+  <span class="d-inline-block ms-2"><a href="">logout</a></span>
+</span>
+{% endblock %}
+
+{% block title %}
+    <h4>New questions</h4>
+{% endblock %}
+
+{% block questions %}
+<!-- <div clas="container d-flex flex-wrap justify-content-between"> -->
+{% for i in data %}
+    <div class="question container ms-0 me-lg-3 mb-3 py-3">
+        <div class="row px-2">
+            <div class="col-2 align-content-center px-0">
+                <img class="img-fluid" src="{% static '/ava1.png' %}" alt="avatar">
+                <div class="btn like px-0">❤️</div>
+                <span class="likes">25</span>
+            </div>
+            <div class="col-10">
+                <h4 class="question-title"><a href="{% url 'question_url' %}">How to stop being nostalgic?</a></h4>
+                <div class="question-text mb-1">Every day I dream and remember the wonderful moments of the past...</div>
+                <span class="me-3 mb-0"><a href="#">answer(5)</a></span>
+                <span class="mb-0">Tags: </span>
+                <span class="mx-2"><a href="#">life</a></span>
+                <span><a href="#">psychology</a></span>
+            </div>
+        </div>
+    </div>
+{% endfor %}    
+<!-- </div> -->
+{% endblock %}
+
+
+<div class="container mt-5 ">
+    <div class="row">
+        <h4>New questions</h4>
+        <div class="col-9 d-flex flex-wrap justify-content-start mt-2">
+            {% for i in data %}
+            <div class="question container ms-0 me-lg-4 mb-3 py-3">
+              <div class="row px-2">
+                <div class="col-2 align-content-center px-0">
+                  <img class="img-fluid" src="{% static '/ava1.png' %}" alt="avatar">
+                  <div class="btn like px-0">❤️</div>
+                  <span class="likes">25</span>
+                </div>
+                <div class="col-10">
+                  <h4 class="question-title">How to stop being nostalgic?</h4>
+                  <div class="question-text mb-1">Every day I dream and remember the wonderful moments of the past...</div>
+                  <span class="me-3 mb-0"><a href="#">answer(5)</a></span>
+                  <span class="mb-0">Tags: </span>
+                  <span class="mx-2"><a href="#">life</a></span>
+                  <span><a href="#">psychology</a></span>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-3 mt-2 ms-0">
+            <div class="sidebar-section">
+              <h5>Popular tags</h5>
+              <div class="sidebar-tags">
+                <span class="tag me-1"><a href="#">Style</a></span>
+                <span class="tag"><a href="#">Web</a></span>
+              </div>
+            </div>
+            <div class="sidebar-section mt-3">
+              <h5>Best Members</h5>
+              <div class="sidebar-users">
+                <div class="user"><a href="#">Sofia Valova</a></div>
+                <div class="user"><a href="#">Ivan Orlov</a></div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div> 
