@@ -1,0 +1,21 @@
+{% load static %}
+<div class="header container mt-3">
+    <div class="menu d-flex flex-wrap align-items-center justify-content-md-between">
+      <ul class="nav d-flex col-4 mb-2 align-items-center justify-content-between mb-md-0">
+        <li><a href="{% url 'list_url' %}" class="nav-link ms-0 px-0 text-black">Questions</a></li>
+        <li><a href="{% url 'ask_url' %}" class="nav-link text-black">Ask</a></li>
+        <li><a href="#" class="nav-link text">About</a></li> 
+        <li><a href="#" class="nav-link text">Team</a></li>
+      </ul>
+
+      <a href="{% url 'list_url' %}"><img src="{% static '/image/Logo.png' %}" class="logo-image mx-auto"></a>
+      
+      <div class="text-end col-4 justify-content-between">
+        <form class="d-inline-block ms-0 mb-3 mb-lg-0 me-lg-0" role="search">
+            <input type="search" class="search-form form-control text-bg-darks" placeholder="Search..." aria-label="Search">
+        </form>
+        {% block user %}
+        {% endblock %}
+      </div>
+    </div>
+</div>

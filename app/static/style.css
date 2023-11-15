@@ -183,3 +183,33 @@ body{
 .answers form input{
     width: 100%;
 }
+.pagination a{
+    text-decoration: none;
+    color:#3c3c3c;
+}
+.pagination.answers{
+    margin-left: 8%;
+}
+.pagination-element a{
+    display: block;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    color:#3c3c3c;
+    border-radius: 50%;
+    background-color: #E8EFE1;
+    border: 1.5px solid black;
+}
+.current-page{
+    display: block;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    background-color: #3c3c3c;
+    color: white;
+}

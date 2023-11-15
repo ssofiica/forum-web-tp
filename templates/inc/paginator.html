@@ -1,0 +1,17 @@
+<div class="pagination ps-4">
+    {% if data.page_obj.has_previous %}
+        {% if data.page_obj.previous_page_number != 1 %}
+            <a href="?page=1" class="me-2 text-dexoration-none">first</a>
+        {% endif %}
+        <div class="pagination-element me-2"><a href="?page={{ data.page_obj.previous_page_number }}">{{ data.page_obj.previous_page_number }}</a></div>
+    {% endif %}
+
+    <span class="current-page me-2">{{ data.page_obj.number }}</span>
+
+    {% if data.page_obj.has_next %}
+        <div class="pagination-element me-2"><a href="?page={{ data.page_obj.next_page_number }}" class="pagination-element me-2">{{ data.page_obj.next_page_number }}</a></div>
+        {% if data.page_obj.next_page_number != data.page_obj.paginator.num_pages %}
+            <a href="?page={{ data.page_obj.paginator.num_pages }}">last</a>
+        {% endif %}
+    {% endif %}
+</div>
