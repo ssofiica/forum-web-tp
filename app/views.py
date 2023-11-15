@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from app.models import Question, Tag, Answer
 
 QUEST_NUMBER = 20
-ANSWER_NUMBER = 5
+ANSWER_NUMBER = 30
 
 def pagination(objects, request, per_page=10):
     paginator = Paginator(objects, per_page)
@@ -11,19 +13,28 @@ def pagination(objects, request, per_page=10):
     return page_obj
 
 def questions(request):
-    questions = []
-    for i in range(1,45):
-        questions.append({'title': 'Title ' + str(i),
-        'id': i, 'text': 'text ' + str(i)
-    })
+    questions = Question.manager.get_new()
+    if questions == None:
+        return HttpResponse(f"Нет такой страницы")
     page_obj = pagination(questions, request, QUEST_NUMBER)
-    return render(request, 'index.html', {'data': {'quest': questions, 'page_obj': page_obj}})
+    return render(request, 'index.html', {'data': {'title': 'New questions','quest': questions, 'page_obj': page_obj}})
 
 def hot(request):
-    return render(request, '')
+    questions = Question.manager.get_hot()
+    if questions == None:
+        return HttpResponse(f"Нет такой страницы")
+    page_obj = pagination(questions, request, QUEST_NUMBER)
+    return render(request, 'index.html', {'data': {'title': 'HOT questions','quest': questions, 'page_obj': page_obj}})
 
-def tag(request):
-    return render(request, '')
+def tag(request, tag_name):
+    tag = Tag.objects.get(name = tag_name)
+    questions = Question.manager.get_questions_by_tag(tag.tag_id)
+    if questions == None:
+        return HttpResponse(f"Нет такой страницы")
+    elif questions.count() == 0:
+        return HttpResponse(f"У этого тэга нет вопросов")
+    page_obj = pagination(questions, request, QUEST_NUMBER)
+    return render(request, 'index.html', {'data': {'title': 'Tag: {}'.format(tag_name), 'quest': questions, 'page_obj': page_obj}})
 
 def ask(request):
     return render(request, 'ask.html')

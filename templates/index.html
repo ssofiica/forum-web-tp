@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block title %}
-    <h4>New questions</h4>
+    <h4>{{ data.title }}</h4>
 {% endblock %}
 
 {% block questions %}
@@ -25,11 +25,11 @@
                 <span class="likes">25</span>
             </div>
             <div class="col-10">
-                <h4 class="question-title"><a href="{% url 'question_url' i.id %}">{{i.title}}</a></h4>
-                <div class="question-text mb-1">{{i.text}}</div>
-                <span class="me-3 mb-0"><a href="#">answer(5)</a></span>
+                <h4 class="question-title"><a href="{% url 'question_url' i.question_id %}">{{i.title}}</a></h4>
+                <div class="question-text mb-1">{{i.description}}</div>
+                <span class="me-3 mb-0"><a href="#">answer(i)</a></span>
                 <span class="mb-0">Tags: </span>
-                <span class="mx-2"><a href="#">life</a></span>
+                <span class="mx-2"><a href="#">Web</a></span>
                 <span><a href="#">psychology</a></span>
             </div>
         </div>
