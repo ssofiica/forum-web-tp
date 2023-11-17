@@ -15,6 +15,8 @@ class Tag(models.Model):
     tag_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=32)
 
+    manager = TagManager()
+
     def __str__(self):
         return f'({self.tag_id}) {self.name}'
 
@@ -23,10 +25,11 @@ class QuestionManager(models.Manager):
         return self.order_by('-created_date')
 
     def get_hot(self):
-        return self.order_by('-rating')[:20]
+        return self.annotate(count=Count('answers')).order_by('-rating')[:20]
 
     def get_questions_by_tag(self, tag):
         return self.filter(tags=tag).order_by('-rating')
+    
 
 class Question(models.Model):
     question_id = models.AutoField(primary_key=True)

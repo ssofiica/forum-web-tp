@@ -27,10 +27,11 @@
             <div class="col-10">
                 <h4 class="question-title"><a href="{% url 'question_url' i.question_id %}">{{i.title}}</a></h4>
                 <div class="question-text mb-1">{{i.description}}</div>
-                <span class="me-3 mb-0"><a href="#">answer(i)</a></span>
+                <span class="me-3 mb-0"><a href="{% url 'question_url' i.question_id %}">answer({{ i.answers.count }})</a></span>
                 <span class="mb-0">Tags: </span>
-                <span class="mx-2"><a href="#">Web</a></span>
-                <span><a href="#">psychology</a></span>
+                {% for tag in i.tags.all%}
+                <span class="mx-2"><a href="{% url 'tag_url' tag.name %}">{{ tag.name }}</a></span>
+                {% endfor %}
             </div>
         </div>
     </div>

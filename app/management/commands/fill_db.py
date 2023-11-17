@@ -12,34 +12,37 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         ratio = kwargs['ratio']
 
-        users = [models.User(username=f'User{i}',
-                        first_name=f'Name{i}',
-                        last_name=f'Surname{i}',
-                        email=f'user{i}@gmail.com',
-                        password=hashers.make_password(f'pass{i}'))
-                        for i in range(ratio)]
-        models.User.objects.bulk_create(users)
-        self.stdout.write("User bd filled\n")
+        # users = [models.User(username=f'User{i}',
+        #                 first_name=f'Name{i}',
+        #                 last_name=f'Surname{i}',
+        #                 email=f'user{i}@gmail.com',
+        #                 password=hashers.make_password(f'pass{i}'))
+        #                 for i in range(ratio)]
+        # models.User.objects.bulk_create(users)
+        # self.stdout.write("User bd filled\n")
 
-        profiles = [models.Profile(user = users[i]) for i in range(ratio)]
-        profiles = models.Profile.objects.bulk_create(profiles)
-        self.stdout.write("Profile bd filled\n")
+        # profiles = [models.Profile(user = users[i]) for i in range(ratio)]
+        # profiles = models.Profile.objects.bulk_create(profiles)
+        # self.stdout.write("Profile bd filled\n")
 
-        tags = [models.Tag(name="tag{}".format(i)) for i in range(ratio)]
-        tags = models.Tag.objects.bulk_create(tags)
-        self.stdout.write("Tags db filled\n")
+        # tags = [models.Tag(name="tag{}".format(i)) for i in range(ratio)]
+        # tags = models.Tag.objects.bulk_create(tags)
+        # self.stdout.write("Tags db filled\n")
 
-        questions = [models.Question(profile=profiles[i], 
-                                     title = "Title of question №{}".format(10*i + j),
-                                     description = "Text that describes question №{}".format(10*i + j)) 
-                                     for i in range(ratio) 
-                                        for j in range(10)]
-        models.Question.objects.bulk_create(questions)
-        for i in range(ratio):
-            question_index = random.sample(range(len(questions)), 10)
-            for index in question_index:
-                questions[index].tags.add(tags[i])
-        self.stdout.write("Question bd filled\n")
+        # questions = [models.Question(profile=profiles[i], 
+        #                              title = "Title of question №{}".format(10*i + j),
+        #                              description = "Text that describes question №{}".format(10*i + j)) 
+        #                              for i in range(ratio) 
+        #                                 for j in range(10)]
+        # models.Question.objects.bulk_create(questions)
+        # for i in range(ratio):
+        #     question_index = random.sample(range(len(questions)), 10)
+        #     for index in question_index:
+        #         questions[index].tags.add(tags[i])
+        # self.stdout.write("Question bd filled\n")
+
+        profiles = models.Profile.objects.all()
+        questions = models.Question.objects.all()
 
         answers = [models.Answer(profile=random.choice(profiles), 
                                  related_question = random.choice(questions), 

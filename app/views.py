@@ -17,7 +17,14 @@ def questions(request):
     if questions == None:
         return HttpResponse(f"Нет такой страницы")
     page_obj = pagination(questions, request, QUEST_NUMBER)
-    return render(request, 'index.html', {'data': {'title': 'New questions','quest': questions, 'page_obj': page_obj}})
+    top_tags = Tag.manager.get_top()
+    data = {
+        'title': 'New questions',
+        'top_tags': top_tags,
+        'quest': questions,
+        'page_obj': page_obj,
+    }
+    return render(request, 'index.html', {'data': data})
 
 def hot(request):
     questions = Question.manager.get_hot()
@@ -27,14 +34,15 @@ def hot(request):
     return render(request, 'index.html', {'data': {'title': 'HOT questions','quest': questions, 'page_obj': page_obj}})
 
 def tag(request, tag_name):
-    tag = Tag.objects.get(name = tag_name)
+    tag = Tag.manager.get(name = tag_name)
     questions = Question.manager.get_questions_by_tag(tag.tag_id)
     if questions == None:
         return HttpResponse(f"Нет такой страницы")
     elif questions.count() == 0:
         return HttpResponse(f"У этого тэга нет вопросов")
     page_obj = pagination(questions, request, QUEST_NUMBER)
-    return render(request, 'index.html', {'data': {'title': 'Tag: {}'.format(tag_name), 'quest': questions, 'page_obj': page_obj}})
+    top_tags = Tag.manager.get_top()
+    return render(request, 'index.html', {'data': {'title': 'Tag: {}'.format(tag_name),'top_tags': top_tags, 'quest': questions, 'page_obj': page_obj}})
 
 def ask(request):
     return render(request, 'ask.html')

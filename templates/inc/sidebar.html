@@ -1,8 +1,9 @@
-<div class="sidebar-section">
+  <div class="sidebar-section">
     <h4>Popular tags</h5>
     <div class="sidebar-tags">
-      <span class="tag me-1"><a href="" >Style</a></span>
-      <span class="tag"><a href="#">Web</a></span>
+      {% for i in data.top_tags %}
+        <span class="tag me-1"><a href="{% url 'tag_url' i.name %}" >{{ i.name }}</a></span>
+      {% endfor %}
     </div>
   </div>
   <div class="sidebar-section mt-3">
