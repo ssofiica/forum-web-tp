@@ -1,18 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block user %}    
-  <button type="button" class="button login ms-lg-2"><a href="{% url 'login_url' %}">Log In</a></button>
-  <button type="button" class="button signup"><a href="{% url 'signup_url' %}">Sign Up</a></button>
-{% endblock %}
 
 {% block title %}
     <h4>Sign Up</h4>
 {% endblock %}
 
 {% block signup %}
-<form action="" class="form signup">
-    <div class="text-danger mb-2">This login is taken</div>
+<form action="{% url 'signup_url' %}" method="post" enctype="multipart/form-data" class="form signup">
+    {% csrf_token %}
     <div class="form-group mb-2">
       <label type="email" for="email">Email</label>
       <input type="text" name="email" id="email"  required>

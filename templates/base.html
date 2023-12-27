@@ -26,8 +26,24 @@
           <form class="d-inline-block ms-0 mb-3 mb-lg-0 me-lg-0" role="search">
             <input type="search" class="search-form form-control text-bg-darks" placeholder="Search..." aria-label="Search">
           </form>
-          {% block user %}
-          {% endblock %}
+          {% if user.is_authenticated == True %}
+          <li>
+            <a href="{% url 'logout_url' %}"><input class="btn btn-outline-danger" type="button" value="Leave"></a>
+          </li>
+          <div class="ava ms-4 me-4">
+            <div class="nickname d-inline-block mb-0"><a href="{% url 'edit_profile_url' %}">{{user.username}}</a></div>
+            <div class="avatar-header header-user-avatar"><a href="{% url 'edit_profile_url' %}"><img src="{% if user.profile.avatar %}
+                {{user.profile.avatar.url}}
+              {% else %}
+                {% static 'image/default_ava.jpg' %}
+              {% endif %}" alt=""></a></div>
+            </div>
+          {% else %}
+          <div class="header-enter">
+            <a href="{% url 'login_url' %}"><input class="btn btn-primary" type="button" value="Log in"></a>
+            <a href="{% url 'signup_url' %}"><input class="btn btn-primary" type="submit" value="Sign up"></a>
+          </div>
+          {% endif %}
         </div>
       </div>
     </div>

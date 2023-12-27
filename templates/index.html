@@ -1,15 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block user %}
-<img class="ava ms-4 me-4" src="{% static '/image/ava2.png' %}" alt="avatar">
-<span class="user-header">
-  <span class="nickname d-inline-block mb-0">ssofiica</span>
-  <span class="d-inline-block mt-0"><a href="{% url 'settings_url' %}">settings</a></span>
-  <span class="d-inline-block ms-2"><a href="">logout</a></span>
-</span>
-{% endblock %}
-
 {% block title %}
     <h4>{{ data.title }}</h4>
 {% endblock %}

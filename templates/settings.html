@@ -1,32 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block user %}
-<img class="ava ms-4 me-4" src="{% static '/image/ava2.png' %}" alt="avatar">
-<span class="user-header">
-  <span class="nickname d-inline-block mb-0">ssofiica</span>
-  <span class="d-inline-block mt-0"><a href="">settings</a></span>
-  <span class="d-inline-block ms-2"><a href="">logout</a></span>
-</span>
-{% endblock %}
 
 {% block title %}
     <h4>Settings: {{data.nickname}}</h4>
 {% endblock %}
 
 {% block settings %}
-<form action="" class="form signup">
+<form action="{% url 'edit_profile_url' %}" method="post" class="form signup">
+    {% csrf_token %}
     <div class="form-group mb-2">
       <label type="email" for="email">Email</label>
       <input type="text" name="email" id="email" placeholder="{{data.login}}">
     </div>
     <div class="form-group mb-2">
-      <label type="text" for="login">Login</label>
-      <input type="text" name="login" id="login" placeholder="{{data.email}}">
-    </div>
-    <div class="form-group mb-2">
-      <label type="text" for="nickname">NickName</label>
-      <input type="text" name="nickname" id="nickname" placeholder="{{data.nickname}}">
+      <label type="text" for="nickname">Username</label>
+      <input type="text" name="nickname" id="nickname" placeholder="{{data.username}}">
     </div>
     <div class="form-group mb-4">
       <label for="ava">Upload avatar</label>

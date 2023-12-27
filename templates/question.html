@@ -1,10 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block user %}       
-    <button type="button" class="button login ms-lg-2"><a href="{% url 'login_url' %}">Log In</a></button>
-    <button type="button" class="button signup"><a href="{% url 'signup_url' %}">Sign Up</a></button>
-{% endblock %}
 
 {% block title %}
     <h4></h4>
@@ -43,7 +39,8 @@
     </div>
     {% endfor %}
     {% include 'inc/paginator.html' %}
-    <form action="" class="form mx-auto">
+    {% if user.is_authenticated %}
+    <form action="{% url 'question_url' question.question_id %}" method="post" class="form mx-auto">
         <div class="form-group mb-2">
             <label for="">Enter answer</label>
             <textarea type="text" name="" id="" maxlength="400" class="" required></textarea>
